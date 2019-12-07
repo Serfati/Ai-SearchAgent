@@ -1,9 +1,10 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class AStarSearch extends ASearch {
     private PriorityQueue<ASearchNode> open_list;
-    private ArrayList<ASearchNode> closed_list;
+    HashSet<ASearchNode> open_list_hash;
+    HashSet<ASearchNode> closed_list_hash;
 
     @Override
     public String getSolverName() {
@@ -18,32 +19,34 @@ public class AStarSearch extends ASearch {
     @Override
     public void initLists() {
         open_list = new PriorityQueue<>((o1, o2) -> (int) (o1.F()-o2.F()));
-        closed_list = new ArrayList<>();
+        open_list_hash = new HashSet<>();
+        closed_list_hash = new HashSet<>();
     }
 
     @Override
     public ASearchNode getOpen(ASearchNode node) {
-        return open_list.stream().filter(node::equals).findFirst().orElse(null);
+        return isOpen(node) ? node : null;
     }
 
     @Override
     public boolean isOpen(ASearchNode node) {
-        return open_list.contains(node);
+        return open_list_hash.contains(node);
     }
 
     @Override
     public boolean isClosed(ASearchNode node) {
-        return closed_list.contains(node);
+        return closed_list_hash.contains(node);
     }
 
     @Override
     public void addToOpen(ASearchNode node) {
         open_list.add(node);
+        open_list_hash.add(node);
     }
 
     @Override
     public void addToClosed(ASearchNode node) {
-        closed_list.add(node);
+        closed_list_hash.add(node);
     }
 
     @Override
@@ -53,7 +56,8 @@ public class AStarSearch extends ASearch {
 
     @Override
     public ASearchNode getBest() {
-        return open_list.poll();
+        ASearchNode bestNode = open_list.poll();
+        open_list_hash.remove(bestNode);
+        return bestNode;
     }
-
 }

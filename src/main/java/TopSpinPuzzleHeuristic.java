@@ -12,26 +12,26 @@ public class TopSpinPuzzleHeuristic {
 	private ArrayList<byte[]> patternList;
 
 	public double getHeuristic(TopSpinPuzzleState problemState) {
-		TopSpinPuzzleState state = problemState;
-		double manhattan = 0;
-		int[] tileArray = problemState._TopSpinPuzzle;
-		int N = tileArray.length;
-		int number = 1;
-		for(int row = 0; row < N; ++row) {
-			for(int col = 0; col < N; ++col) {
-				int value = tileArray[row][col];
-				if (value != 0 && number != value)
-					manhattan = manhattan+value * (Math.abs(row-getRaw(N, value))+Math.abs(col-getCol(N, value)));
-				number++;
-			}
-		}
-
-		manhattan = (manhattan * 1.23);
-		double H = 2.9 * (linerCol(tileArray, N)+linerRow(tileArray, N));
-		return (manhattan+H);
-		if (problemState.isGoalState())
-			return 0;
-
+//		TopSpinPuzzleState state = problemState;
+//		double manhattan = 0;
+//		int[] tileArray = problemState._TopSpinPuzzle;
+//		int N = tileArray.length;
+//		int number = 1;
+//		for(int row = 0; row < N; ++row) {
+//			for(int col = 0; col < N; ++col) {
+//				int value = tileArray[row][col];
+//				if (value != 0 && number != value)
+//					manhattan = manhattan+value * (Math.abs(row-getRaw(N, value))+Math.abs(col-getCol(N, value)));
+//				number++;
+//			}
+//		}
+//
+//		manhattan = (manhattan * 1.23);
+//		double H = 2.9 * (linerCol(tileArray, N)+linerRow(tileArray, N));
+//		return (manhattan+H);
+//		if (problemState.isGoalState())
+		return 0;
+//
 
 	}
 
