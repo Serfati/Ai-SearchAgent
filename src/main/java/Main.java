@@ -9,10 +9,10 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Start!");
 		task1();    //ID
-		task2(); // BFS
-		task3();    //UCS
+		//task2(); // BFS
+		//task3();    //UCS
 		//task4();	//TOPSPIN
-		task5();    //A*
+		//task5();    //A*
 		System.out.println();
 		System.out.println("Done!");
 	}

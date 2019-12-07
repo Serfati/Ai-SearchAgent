@@ -18,7 +18,7 @@ public class AStarSearch extends ASearch {
 
     @Override
     public void initLists() {
-        open_list = new PriorityQueue<>((o1, o2) -> (int) (o1.F()-o2.F()));
+        open_list = new PriorityQueue<>((o1, o2) -> o1.F() == o2.F() ? (int) (o1.H()-o2.H()) : (int) (o1.F()-o2.F()));
         open_list_hash = new HashSet<>();
         closed_list_hash = new HashSet<>();
     }
