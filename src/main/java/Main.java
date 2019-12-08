@@ -12,7 +12,7 @@ public class Main {
 		//task2(); // BFS
 		//task3();    //UCS
 		//task4();	//TOPSPIN
-		task5();    //A*
+		//task5();    //A*
 		System.out.println();
 		System.out.println("Done!");
 	}
