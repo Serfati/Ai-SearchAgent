@@ -9,8 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Start!");
 		task1();    //ID
-		task2(); // BFS
-		task3();    //UCS
+		//task2(); // BFS
+		//task3();    //UCS
 		//task4();	//TOPSPIN
 		task5();    //A*
 		System.out.println();
@@ -99,7 +99,7 @@ public class Main {
 					String type
 			) throws IOException {
 		List<String> instances = new ArrayList<String>();
-		String currentDir = "/home/serfati/Desktop/Ai-SearchAgent/instances/"+type+"/";
+		String currentDir = "C:\\Users\\dordo\\עבודות אוניברסיטה\\מבוא לבינה מלאכותית\\Ai-SearchAgent\\instances\\"+type+"/";
 		File folder = new File(currentDir);
 		File[] listOfFiles = folder.listFiles();
 

@@ -30,9 +30,31 @@ public class TopSpinPuzzleHeuristic {
 //		double H = 2.9 * (linerCol(tileArray, N)+linerRow(tileArray, N));
 //		return (manhattan+H);
 //		if (problemState.isGoalState())
-		return 0;
-//
-
+		TopSpinPuzzleState state = problemState;
+		int[] tileArray = problemState._TopSpinPuzzle;
+		int h=0;
+		for(int i=0; i<tileArray.length; i++){
+			int a=i;
+			int b;
+			int c;
+			int d;
+			if(i>=7)
+				b=3+i-10;
+			else
+				b=i+3;
+			if(i==9)
+				c=1;
+			else
+				c=i+1;
+			if(i>=8)
+				d=i+2-10;
+			else
+				d=i+2;
+			if(tileArray[a]>tileArray[b] && tileArray[c]>tileArray[d] && !((tileArray[c]==9 && tileArray[d]==0) || (tileArray[a]==9 && tileArray[b]==2) || (tileArray[a]==8 && tileArray[b]==1) || (tileArray[a]==7 && tileArray[b]==0))){
+				h+=tileArray[a]+tileArray[b]+tileArray[c]+tileArray[d];
+			}
+		}
+		return h;
 	}
 
 	public int calculateHeu(byte[] board) {
