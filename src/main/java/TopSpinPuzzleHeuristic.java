@@ -50,8 +50,11 @@ public class TopSpinPuzzleHeuristic {
 				d=i+2-10;
 			else
 				d=i+2;
-			if(tileArray[a]>tileArray[b] && tileArray[c]>tileArray[d] && !((tileArray[c]==9 && tileArray[d]==0) || (tileArray[a]==9 && tileArray[b]==2) || (tileArray[a]==8 && tileArray[b]==1) || (tileArray[a]==7 && tileArray[b]==0))){
-				h+=tileArray[a]+tileArray[b]+tileArray[c]+tileArray[d];
+			if((tileArray[a]>tileArray[b] && !((tileArray[a]==9 && tileArray[b]==2) || (tileArray[a]==8 && tileArray[b]==1) || (tileArray[a]==7 && tileArray[b]==0))) || ((tileArray[c]>tileArray[d]) && !(tileArray[c]==9 && tileArray[d]==0))){
+				if(h==0)
+					h=tileArray[a]+tileArray[b]+tileArray[c]+tileArray[d];
+				else if(tileArray[a]+tileArray[b]+tileArray[c]+tileArray[d]<h)
+					h=tileArray[a]+tileArray[b]+tileArray[c]+tileArray[d];
 			}
 		}
 		return h;

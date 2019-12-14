@@ -1,10 +1,11 @@
 import java.util.ArrayDeque;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Queue;
 
 public class BreadthFirstSearch extends ASearch {
     private Queue<BlindSearchNode> open_list;
-    HashSet<ASearchNode> open_list_hash;
+    HashMap<ASearchNode,ASearchNode> open_list_hash;
     HashSet<ASearchNode> closed_list_hash;
 
 
@@ -21,18 +22,18 @@ public class BreadthFirstSearch extends ASearch {
     @Override
     public void initLists() {
         open_list = new ArrayDeque<>();
-        open_list_hash = new HashSet<>();
+        open_list_hash = new HashMap<>();
         closed_list_hash = new HashSet<>();
     }
 
     @Override
     public ASearchNode getOpen(ASearchNode node) {
-        return isOpen(node) ? node : null;
+        return isOpen(node) ? open_list_hash.get(node) : null;
     }
 
     @Override
     public boolean isOpen(ASearchNode node) {
-        return open_list_hash.contains(node);
+        return open_list_hash.containsKey(node);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class BreadthFirstSearch extends ASearch {
     @Override
     public void addToOpen(ASearchNode node) {
         open_list.add((BlindSearchNode) node);
-        open_list_hash.add(node);
+        open_list_hash.put(node,node);
     }
 
     @Override

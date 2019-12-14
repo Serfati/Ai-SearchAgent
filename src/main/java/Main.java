@@ -9,10 +9,10 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Start!");
 		task1();    //ID
-		//task2(); // BFS
-		//task3();    //UCS
-		//task4();	//TOPSPIN
-		//task5();    //A*
+		task2(); // BFS
+		task3();    //UCS
+		task4();	//TOPSPIN
+		task5();    //A*
 		System.out.println();
 		System.out.println("Done!");
 	}
@@ -67,6 +67,10 @@ public class Main {
 			long totalTime = 0;
 			List<String> instances = getInstances(instancesType);
 			for(String instance : instances) {
+				int check;
+				if(instance.contains("_10_12")){
+					check=5;
+				}
 				System.out.println("---- "+instance.substring(instance.indexOf("topSpin_"))+" ----");
 				TopSpinPuzzle problem = new TopSpinPuzzle(instance);
 				for(ASearch solver : solvers) {

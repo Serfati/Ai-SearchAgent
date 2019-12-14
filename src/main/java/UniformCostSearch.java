@@ -1,10 +1,11 @@
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class UniformCostSearch extends ASearch {
     // Define lists here ...
     private PriorityQueue<ASearchNode> open_list;
-    HashSet<ASearchNode> open_list_hash;
+    HashMap<ASearchNode,ASearchNode> open_list_hash;
     HashSet<ASearchNode> closed_list_hash;
 
     @Override
@@ -20,19 +21,19 @@ public class UniformCostSearch extends ASearch {
     @Override
     public void initLists() {
         open_list = new PriorityQueue<>((o1, o2) -> (int) (o1.G()-o2.G()));
-        open_list_hash = new HashSet<>();
+        open_list_hash = new HashMap<>();
         closed_list_hash = new HashSet<>();
     }
 
 
     @Override
     public ASearchNode getOpen(ASearchNode node) {
-        return isOpen(node) ? node : null;
+        return isOpen(node) ? open_list_hash.get(node) : null;
     }
 
     @Override
     public boolean isOpen(ASearchNode node) {
-        return open_list_hash.contains(node);
+        return open_list_hash.containsKey(node);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class UniformCostSearch extends ASearch {
     @Override
     public void addToOpen(ASearchNode node) {
         open_list.add(node);
-        open_list_hash.add(node);
+        open_list_hash.put(node,node);
     }
 
     @Override
